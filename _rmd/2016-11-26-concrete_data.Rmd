@@ -1,8 +1,11 @@
 ---
-title: "Concrete-compresive-strength"
-author: "Daniel Abban"
-date: "10 October 2016"
-output: html_document
+layout: post
+title: The concrete dataset
+author: Daniel Abban
+published: false
+status: done_process
+draft: false
+tags: R 
 ---
 
 This is a model built for predicting **concrete compressive strength** - an important material in civil engineering.
