@@ -8,9 +8,6 @@ output: html_document
 This is a model built for predicting **concrete compressive strength** - an important material in civil engineering.
 
 ***
-![](conc3.png)
-
-***
 
 The concrete compressive strength is a highly nonlinear function of **age** and 
 **ingredients**. 
