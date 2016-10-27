@@ -1,16 +1,15 @@
 ---
-title: "Concrete-compresive-strength"
-author: "Daniel Abban"
-date: "10 October 2016"
-output: html_document
+layout: post
+title: concrete dataset
+author: Andy South
+published: false
+status: process
+draft: false
+tags: R Jekyll RStudio
 ---
 
 This is a model built for predicting **concrete compressive strength** - an important material in civil engineering.
 
-***
-![](conc3.png)
-
-***
 
 The concrete compressive strength is a highly nonlinear function of **age** and 
 **ingredients**. 
