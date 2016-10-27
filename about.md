@@ -4,13 +4,12 @@ title: About
 permalink: /about/
 ---
 
-I'm the CEO of DataLamp Consult, my job is to use data for solving common bussinesss problems. I like R and maps. This blog is to share R related things.
+My name is Daniel Abban, I do data analytics. I created this blog purposely for sharing some real data science projects and hopefully it could serve as a learning tool for other colleague
 
 
 
-Or [google scholar](http://scholar.google.com/citations?user=eJz46kAAAAAJ&hl=en)
 
-### Contact
+### Contact me:
 
 [datalampconsult@gmail.com](mailto:datalampconsult@gmail.com)
 
