@@ -1,8 +1,11 @@
 ---
-title: "Energy-efficiency"
-author: "Daniel Abban"
-date: "20 October 2016"
-output: html_document
+layout: post
+title: Energy
+author: daniel abban
+published: false
+status: process
+draft: false
+tags: R 
 ---
 
 ***
