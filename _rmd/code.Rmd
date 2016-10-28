@@ -1,0 +1,122 @@
+---
+title: "Energy-efficiency"
+author: "Daniel Abban"
+date: "20 October 2016"
+output: html_document
+---
+
+***
+
+#### Abstract: 
+This study looked into assessing the heating load and cooling load requirements of buildings (that is, energy efficiency) as a function of building parameters.
+
+
+***
+
+### Data set information:
+
+We perform energy analysis using 12 different building shapes simulated in Ecotect. The buildings differ with respect to the glazing area, the glazing area distribution, and the orientation, amongst other parameters. We simulate various settings as functions of the afore-mentioned characteristics to obtain 768 building shapes.
+
+
+Our aim is to use a model to predict the Heating Load and the cooling Load using the eight features below:
+
+Specifically: 
+
+* Relative Compactness 
+* Surface Area 
+* Wall Area 
+* Roof Area 
+* Overall Height 
+* Orientation 
+* Glazing Area 
+* Glazing Area Distribution 
+* Heating Load 
+* Cooling Load
+
+```{r echo=FALSE, message=FALSE}
+library(tidyverse)
+library(readxl)
+library(GGally)
+library(caret)
+library(plotly)
+library(e1071)
+building <- read_excel("ENB2012_data.xlsx")
+building <- building[, 1:10]
+```
+
+
+```{r echo=FALSE}
+
+names(building) <- c("compactness", "surfaceArea",
+                     "wallArea", "RoofArea",
+                     "OverallHeight", "Orientation",
+                     "GlazingArea", "GlazingAreaDist",
+                     "HeatingLoad", "CoolingLoad")
+```
+
+***
+
+The data contains 8 predictors and 2 outcomes we are modeling
+```{r echo=FALSE}
+str(building)
+```
+
+***
+
+We observe the summary of the data below
+```{r}
+summary(building)
+```
+
+***
+
+Remove the missing values:
+```{r}
+building <- building %>%
+        filter(!is.na(compactness))
+
+```
+
+ 
+ 
+ Glazing area is a part of a wall or window, made of glass
+ Glazing can be mounted on the surface of a window sash or door stile, usually made of wood, aluminium or PVC.
+ Glazing is commonly used in low temperature solar thermal collectors because it helps retain the collected heat.
+
+***
+
+```{r}
+building2 <- select(building, -HeatingLoad)
+
+# romove correlation:
+correlation <- cor(building2)
+tooHigh <- findCorrelation(correlation, cutoff = .75)
+filtBuilding <- building2[, -tooHigh]
+
+
+# remove near-zero variance
+nzv <- nearZeroVar(filtBuilding, saveMetrics = TRUE)
+
+# Fit the linear model:
+lmFit <- lm(CoolingLoad ~ ., data = filtBuilding)
+summary(lmFit)
+ggcorr(filtBuilding)
+
+
+hisFuc <- function(x){
+        ggplot(building2, aes(x = x)) +
+                geom_histogram(bins = 50)
+        ggplotly()
+}
+
+hisFuc(building2$compactness)
+hisFuc(building2$surfaceArea)
+hisFuc(building2$wallArea)
+hisFuc(building2$OverallHeight)
+hisFuc(building2$Orientation)
+hisFuc(building2$GlazingArea)
+hisFuc(building2$CoolingLoad)
+
+
+ggplot(building2, aes(x = Orientation)) +
+        geom_histogram(bins = 50)
