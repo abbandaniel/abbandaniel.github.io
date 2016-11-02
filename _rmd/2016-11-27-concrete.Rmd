@@ -1,11 +1,11 @@
 ---
 layout: post
 title: concrete dataset
-author: Andy South
+author: Daniel Abban
 published: false
 status: process
 draft: false
-tags: R Jekyll RStudio
+tags: R
 ---
 
 This is a model built for predicting **concrete compressive strength** - an important material in civil engineering.
