@@ -58,15 +58,24 @@ url <- paste0('http://apps.who.int/gho/athena/api/GHO/',code,'.csv?filter=COUNTR
 #read query result into dataframe
 dF <- read.csv(url,as.is=TRUE)
 library(rworldmap)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in library(rworldmap): there is no package called 'rworldmap'
+{% endhighlight %}
+
+
+
+{% highlight r %}
 sPDF <- joinCountryData2Map(dF, nameJoinColumn="COUNTRY", joinCode="ISO3")
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## 24 codes from your data successfully matched countries in the map
-## 0 codes from your data failed to match with a country code in the map
-## 220 codes from the map weren't represented in your data
+## Error in eval(expr, envir, enclos): could not find function "joinCountryData2Map"
 {% endhighlight %}
 
 
@@ -75,7 +84,11 @@ sPDF <- joinCountryData2Map(dF, nameJoinColumn="COUNTRY", joinCode="ISO3")
 mapCountryData(sPDF,nameColumnToPlot="Numeric",catMethod="fixedWidth",mapRegion="africa", mapTitle="Gambian sleeping sickness cases in 2013")
 {% endhighlight %}
 
-![plot of chunk 14-12-10-rworldmap](/figures/14-12-10-rworldmap-1.png) 
+
+
+{% highlight text %}
+## Error in eval(expr, envir, enclos): could not find function "mapCountryData"
+{% endhighlight %}
  
 The code syntax highlighting and dark grey background for both code and R text outputs are what come as the default with Jekyll-Now. I'm a little unsure about them. They seem to be specified in [_highlights.scss](https://github.com/AndySouth/andysouth.github.io/blob/master/_scss/_highlights.scss), perhaps I'll look at modifying later.   
  
